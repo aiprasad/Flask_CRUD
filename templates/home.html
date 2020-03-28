@@ -1,0 +1,74 @@
+<html>
+  <body bgcolor="#E6E6FA">
+    <center><h1>ADD STUDENT INFORMATION</h1></center>
+    <form method="POST" action="/">
+      <input type="any" name="student_id" placeholder="Student ID">
+      <input type="text" name="first_name" placeholder="First Name">
+      <input type="text" name="last_name" placeholder="Last Name">
+      <input type="any" name="dob" placeholder="Date of Birth">
+      <input type="any" name="amount_due"placeholder="Amount Due in CAD">
+      <input type="submit" value="Add">
+    </form>
+
+    <center><h1>MODIFY STUDENT INFORMATION</h1></center>
+    <table>
+      {% for student_info in student_db %}</table>
+      <table>
+        <tr>
+          <th>Student ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Date Of Birth</th>
+          <th>Amount Due in CAD</th>
+        </tr>
+        <tr>
+          <td>{{student_info.student_id}}</td>
+          <td>{{student_info.first_name}}</td>
+          <td>{{student_info.last_name}}</td>
+          <td>{{student_info.dob}}</td>
+          <td>{{student_info.amount_due}}</td>
+          <td>
+            <form method="POST" action="./update" style="display: inline">
+              <!-- <tr>
+              <th>Student ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Date Of Birth</th>
+              <th>Amount Due in CAD</th>
+             </tr> -->
+             <tr>
+              <td><input type="hidden" value="{{student_info.student_id}}" name="oldstudent"></td>
+              <td><input type="hidden" value="{{student_info.first_name}}" name="oldstudent"></td>
+              <td><input type="hidden" value="{{student_info.last_name}}" name="oldstudent"></td>
+              <td><input type="hidden" value="{{student_info.dob}}" name="oldstudent"></td>
+              <td><input type="hidden" value="{{student_info.amount_due}}" name="oldstudent"></td>
+              
+            </tr>
+            <tr>
+              <td><input type="hidden" value="{{student_info.student_id}}" name="newstudent"></td>
+              <td><input type="hidden" value="{{student_info.first_name}}" name="newstudent"></td>
+              <td><input type="hidden" value="{{student_info.last_name}}" name="newstudent"></td>
+              <td><input type="hidden" value="{{student_info.dob}}" name="newstudent"></td>
+              <td><input type="hidden" value="{{student_info.amount_due}}" name="newstudent"></td>
+              
+            </tr>
+      
+            </form>
+          
+          </td>
+        </table>  
+          <td>
+            <form method="POST" action="./delete" style="display: inline">
+              <input type="hidden" value="{{student_info.student_id}}" name="student_id">
+              <input type="hidden" value="{{student_info.first_name}}" name="first_name">
+              <input type="hidden" value="{{student_info.last_name}}" name="last_name">
+              <input type="hidden" value="{{student_info.dob}}" name="dob">
+              <input type="hidden" value="{{student_info.amount_due}}" name="amount_due">
+              <input type="submit" value="Delete">
+              <input type="submit" value="Update">
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+  </body>
+</html>
